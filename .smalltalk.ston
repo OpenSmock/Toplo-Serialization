@@ -1,7 +1,7 @@
 SmalltalkCISpec {
   #loading : [
     SCIMetacelloLoadSpec {
-      #baseline : 'BlocSerialization',
+      #baseline : 'ToploSerialization',
       #directory : 'src',
       #platforms : [ #pharo ]
     }
