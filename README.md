@@ -1,18 +1,9 @@
-[![License](https://img.shields.io/github/license/OpenSmock/ProjectName.svg)](./LICENSE)
+[![License](https://img.shields.io/github/license/OpenSmock/Bloc-Serialization.svg)](./LICENSE)
+[![Pharo 11 CI](https://github.com/OpenSmock/Bloc-Serialization/actions/workflows/Pharo11CI.yml/badge.svg)](https://github.com/OpenSmock/Bloc-Serialization/actions/workflows/Pharo11CI.yml)
+[![Pharo 12 CI](https://github.com/OpenSmock/Bloc-Serialization/actions/workflows/Pharo12CI.yml/badge.svg)](https://github.com/OpenSmock/Bloc-Serialization/actions/workflows/Pharo12CI.yml)
 
-<badges for only one tests script>
-   
-[![Tests](https://github.com/OpenSmock/ProjectName/actions/workflows/Tests.yml/badge.svg)](https://github.com/OpenSmock/ProjectName/actions/workflows/Tests.yml)
-[![Pharo 11](https://img.shields.io/badge/Pharo-11-%23aac9ff.svg)](https://pharo.org/download)
-[![Pharo 12](https://img.shields.io/badge/Pharo-12-%23aac9ff.svg)](https://pharo.org/download)
-
-<badges for separated tests scripts>
-   
-[![Pharo 11 CI](https://github.com/OpenSmock/ProjectName/actions/workflows/Pharo11CI.yml/badge.svg)](https://github.com/OpenSmock/ProjectName/actions/workflows/Pharo11CI.yml)
-[![Pharo 12 CI](https://github.com/OpenSmock/ProjectName/actions/workflows/Pharo12CI.yml/badge.svg)](https://github.com/OpenSmock/ProjectName/actions/workflows/Pharo12CI.yml)
-
-# ProjectName
-Project description here.
+# Toplo-Serialization
+Toplo serialization features to store/unstore ToElements.
 
 ## Getting Started
 
@@ -22,14 +13,15 @@ To install the project on your Pharo image you can just execute the following sc
 
 ```smalltalk
 Metacello new
-   baseline: 'ProjectName';
-   repository: 'github://OpenSmock/ProjectName:main/src';
+   baseline: 'ToploSerialization';
+   repository: 'github://OpenSmock/Toplo-Serialization:main/src';
    load.
 ```
 
 ## Dependencies
 
-No dependencies.
+- [Toplo](https://github.com/plantec/Toplo)
+- [Bloc-Serialization](https://github.dev/OpenSmock/Bloc-Serialization)
 
 ## License
 
