@@ -1,13 +1,9 @@
 SmalltalkCISpec {
   #loading : [
     SCIMetacelloLoadSpec {
-      #baseline : 'ProjectName',
+      #baseline : 'BlocSerialization',
       #directory : 'src',
       #platforms : [ #pharo ]
     }
-  ],
-  #testing : {
-    #failOnZeroTests : false,
-    #packages : [ 'ProjectNamePackage.*' ]
-  }
+  ]
 }
