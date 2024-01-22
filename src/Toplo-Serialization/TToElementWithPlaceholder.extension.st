@@ -1,6 +1,6 @@
 Extension { #name : #TToElementWithPlaceholder }
 
-{ #category : #'*Toplo-Serializer' }
+{ #category : #'*Toplo-Serialization' }
 TToElementWithPlaceholder >> isLeaf [
 
 	^ false

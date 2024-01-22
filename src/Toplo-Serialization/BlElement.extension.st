@@ -1,6 +1,6 @@
 Extension { #name : #BlElement }
 
-{ #category : #'*Toplo-Serializer' }
+{ #category : #'*Toplo-Serialization' }
 BlElement >> isLeaf [
 
 	^ false

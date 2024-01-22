@@ -1,6 +1,6 @@
 Extension { #name : #ToLabel }
 
-{ #category : #'*Toplo-Serializer' }
+{ #category : #'*Toplo-Serialization' }
 ToLabel >> stonPostReferenceResolution [
 
 	super stonPostReferenceResolution.
@@ -9,7 +9,7 @@ ToLabel >> stonPostReferenceResolution [
 		self userData removeKey: #stonToLabelText ]
 ]
 
-{ #category : #'*Toplo-Serializer' }
+{ #category : #'*Toplo-Serialization' }
 ToLabel >> stonUserDataOn: aIdentityDictionary [
 
 	super stonUserDataOn: aIdentityDictionary.

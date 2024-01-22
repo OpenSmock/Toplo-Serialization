@@ -1,12 +1,12 @@
 Extension { #name : #ToElement }
 
-{ #category : #'*Toplo-Serializer' }
+{ #category : #'*Toplo-Serialization' }
 ToElement >> isLeaf [
 
 	^ true.
 ]
 
-{ #category : #'*Toplo-Serializer' }
+{ #category : #'*Toplo-Serialization' }
 ToElement >> stonPostReferenceResolution [
 
 	super stonPostReferenceResolution.
@@ -27,7 +27,7 @@ ToElement >> stonPostReferenceResolution [
 		 ]
 ]
 
-{ #category : #'*Toplo-Serializer' }
+{ #category : #'*Toplo-Serialization' }
 ToElement >> stonUserDataOn: aIdentityDictionary [
 
 	super stonUserDataOn: aIdentityDictionary.
