@@ -5,9 +5,5 @@ SmalltalkCISpec {
       #directory : 'src',
       #platforms : [ #pharo ]
     }
-  ],
-  #testing : {
-    #packages : [ 'Toplo-Serialization.*' ],
-    #packages : [ 'Bloc-Serialization.*' ]
-  }
+  ]
 }
