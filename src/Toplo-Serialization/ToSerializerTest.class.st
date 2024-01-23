@@ -95,16 +95,60 @@ ToSerializerTest >> testIsLeaf3 [
 ]
 
 { #category : #tests }
-ToSerializerTest >> testToButton [
+ToSerializerTest >> testToButton1 [
+
+	| origin |
+	origin := ToButton new
+		          labelText: 'hello';
+		          iconImage: (self iconNamed: #class);
+		          yourself.
+
+	self test: origin on: [ :element |
+		self assert: element labelText asString equals: 'hello'.
+		self
+			assert: element iconImage background image bits
+			equals: (self iconNamed: #class) bits ]
+]
+
+{ #category : #tests }
+ToSerializerTest >> testToButton2 [
 
 	| origin |
 	origin := ToButton new
 		          labelText: 'hello';
 		          yourself.
 
-	self
-		test: origin
-		on: [ :element | self assert: element labelText asString equals: 'hello' ]
+	self test: origin on: [ :element |
+		self assert: element labelText asString equals: 'hello'.
+		self assert: element icon equals: nil ]
+]
+
+{ #category : #tests }
+ToSerializerTest >> testToButton3 [
+
+	| origin |
+	origin := ToButton new
+		          iconImage: (self iconNamed: #class);
+		          yourself.
+
+	self test: origin on: [ :element |
+		self assert: element label equals: nil.
+		self
+			assert: element iconImage background image bits
+			equals: (self iconNamed: #class) bits ]
+]
+
+{ #category : #tests }
+ToSerializerTest >> testToButton4 [
+
+	| origin |
+	origin := ToButton new.
+
+	self test: origin on: [ :element |
+		self assert: element label equals: nil.
+		self
+			assert: element icon
+			equals: nil ]
 ]
 
 { #category : #tests }
