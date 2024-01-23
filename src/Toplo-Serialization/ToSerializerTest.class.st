@@ -152,6 +152,118 @@ ToSerializerTest >> testToButton4 [
 ]
 
 { #category : #tests }
+ToSerializerTest >> testToCheckbox1 [
+
+	| origin |
+	origin := ToCheckbox new
+		          labelText: 'hello';
+		          yourself.
+
+	self test: origin on: [ :element |
+		self assert: element labelText asString equals: 'hello'.
+		self assert: element checked equals: false ]
+]
+
+{ #category : #tests }
+ToSerializerTest >> testToCheckbox2 [
+
+	| origin |
+	origin := ToCheckbox new
+		          labelText: 'hello';
+		          check;
+		          yourself.
+
+	self test: origin on: [ :element |
+		self assert: element labelText asString equals: 'hello'.
+		self assert: element isChecked ]
+]
+
+{ #category : #tests }
+ToSerializerTest >> testToCheckbox3 [
+
+	| button1 button2 button3 pane |
+	pane := ToPane new.
+	button1 := ToCheckbox new
+		           id: #button1;
+		           labelText: 'button1';
+		           yourself.
+	button2 := ToCheckbox new
+		           id: #button2;
+		           labelText: 'button2';
+		           yourself.
+	button3 := ToCheckbox new
+		           id: #button3;
+		           labelText: 'button3';
+		           yourself.
+	pane addChildren: {
+			button1.
+			button2.
+			button3 }.
+	button2 check.
+
+	self test: pane on: [ :element |
+		self assert: element childrenCount equals: 3.
+		self assert: (element childAt: 1) id equals: #button1.
+		self assert: (element childAt: 2) id equals: #button2.
+		self assert: (element childAt: 3) id equals: #button3.
+		self assert: (element childAt: 1) isUnchecked.
+		self assert: (element childAt: 2) isChecked.
+		self assert: (element childAt: 3) isUnchecked ]
+]
+
+{ #category : #tests }
+ToSerializerTest >> testToCheckbox4 [
+
+	| button1 button2 button3 pane group |
+	pane := ToPane new.
+	group := ToCheckableGroup new.
+	button1 := ToCheckbox new
+		           id: #button1;
+		           labelText: 'button1';
+		           addToGroup: group;
+		           yourself.
+	button2 := ToCheckbox new
+		           id: #button2;
+		           labelText: 'button2';
+		           addToGroup: group;
+		           yourself.
+	button3 := ToCheckbox new
+		           id: #button3;
+		           labelText: 'button3';
+		           addToGroup: group;
+		           yourself.
+	pane addChildren: {
+			button1.
+			button2.
+			button3 }.
+	button2 check.
+
+	self test: pane on: [ :element |
+		self assert: element childrenCount equals: 3.
+		self assert: (element childAt: 1) id equals: #button1.
+		self assert: (element childAt: 2) id equals: #button2.
+		self assert: (element childAt: 3) id equals: #button3.
+		self assert: (element childAt: 1) isUnchecked.
+		self assert: (element childAt: 2) isChecked.
+		self assert: (element childAt: 3) isUnchecked.
+		self assert: (element childAt: 1) group isNotNil.
+		self
+			assert: (element childAt: 1) group
+			equals: (element childAt: 2) group.
+		self
+			assert: (element childAt: 2) group
+			equals: (element childAt: 3) group.
+		self
+			assert: (element childAt: 1) group buttons size equals: 3.
+			self
+			assert: ((element childAt: 1) group buttons includes: (element childAt: 1)).
+			self
+			assert: ((element childAt: 1) group buttons includes: (element childAt: 2)).
+			self
+			assert: ((element childAt: 1) group buttons includes: (element childAt: 3)). ]
+]
+
+{ #category : #tests }
 ToSerializerTest >> testToLabel [
 
 	| origin |
