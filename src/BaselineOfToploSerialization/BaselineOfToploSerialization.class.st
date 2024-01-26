@@ -29,7 +29,7 @@ BaselineOfToploSerialization >> dependency: spec [
 		with: [
 		spec repository: 'github://OpenSmock/Bloc-Serialization:main/src' ].
 
-	spec baseline: 'Toplo' with: [ spec repository: 'github://plantec/Toplo:main/src' ].
+	spec baseline: 'Toplo' with: [ spec repository: 'github://pharo-graphics/Toplo:main/src' ].
 
 
 ]
