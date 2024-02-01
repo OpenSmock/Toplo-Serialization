@@ -1,7 +1,7 @@
 Class {
 	#name : #ToSerializerTest,
 	#superclass : #BlocSerializationTests,
-	#category : #'Toplo-Serialization'
+	#category : #'Toplo-Serialization-cases-test'
 }
 
 { #category : #tests }
@@ -61,7 +61,7 @@ ToSerializerTest >> testIsLeaf1 [
 ToSerializerTest >> testIsLeaf2 [
 
 	| b1 b2 |
-	b1 := ToElement new
+	b1 := ToElementWithLeafForTesting new
 		      id: #b1;
 		      yourself.
 	b2 := ToElement new
@@ -69,10 +69,11 @@ ToSerializerTest >> testIsLeaf2 [
 		      yourself.
 	b1 addChild: b2.
 
-	  [ :element |
-		self assert: element isLeaf equals: true.
-		self assert: element id equals: #b1.
-		self assert: element childrenCount equals: 0 ] value: b1 serialize materializeAsBlElement 
+	[ :element |
+	self assert: element isLeaf equals: true.
+	self assert: element id equals: #b1.
+	self assert: element childrenCount equals: 0 ] value:
+		b1 serialize materializeAsBlElement
 ]
 
 { #category : #tests }
@@ -92,6 +93,42 @@ ToSerializerTest >> testIsLeaf3 [
 		self assert: element id equals: #b1.
 		self assert: element childrenCount equals: 1.
 		self assert: (element childAt: 1) id equals: #b2 ]
+]
+
+{ #category : #tests }
+ToSerializerTest >> testIsLeaf4 [
+
+	| b1 b2 |
+	b1 := ToElement new
+		      id: #b1;
+		      yourself.
+	b2 := BlElement new
+		      id: #b2;
+		      yourself.
+	b1 addChild: b2.
+
+	self test: b1 on: [ :element |
+		self assert: element isLeaf equals: false.
+		self assert: element id equals: #b1.
+		self assert: element childrenCount equals: 1.
+		self assert: (element childAt: 1) id equals: #b2 ]
+]
+
+{ #category : #tests }
+ToSerializerTest >> testStamps [
+
+	| origin |
+	origin := ToElement new
+		          addStamp: #noValue;
+		          addStamp: #withValue withValue: #toto;
+		          yourself.
+
+	self
+		test: origin
+		on: [ :element | self assert: (element hasStamp: #noValue).
+			self assert: (element hasStamp: #withValue).
+			self assert: (element valueOfStamp: #noValue) value equals: true.
+			self assert: (element valueOfStamp: #withValue) value equals: #toto ]
 ]
 
 { #category : #tests }
@@ -272,6 +309,22 @@ ToSerializerTest >> testToLabel [
 	self
 		test: origin
 		on: [ :element | self assert: element text asString equals: 'hello' ]
+]
+
+{ #category : #tests }
+ToSerializerTest >> testTokens [
+
+	| origin |
+	origin := ToElement new
+		          addTokenNamed: #hello withValue: #goodbye;
+		          addTokenNamed: #titi withValue: #toto;
+		          yourself.
+
+	self test: origin on: [ :element |
+		self assert: (element ensuredSkinManager tokenPropertyValue: #hello from: element) isNotNil.
+		self assert: (element ensuredSkinManager tokenPropertyValue: #titi from: element) isNotNil.
+		self assert: (element valueOfTokenNamed: #hello) value equals: #goodbye.
+		self assert: (element valueOfTokenNamed: #titi) value equals: #toto ]
 ]
 
 { #category : #tests }

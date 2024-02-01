@@ -3,7 +3,7 @@ Extension { #name : #ToElement }
 { #category : #'*Toplo-Serialization' }
 ToElement >> isLeaf [
 
-	^ true.
+	^ (self class == ToElement) not
 ]
 
 { #category : #'*Toplo-Serialization' }
