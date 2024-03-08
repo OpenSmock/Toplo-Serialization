@@ -107,14 +107,14 @@ ToSerializerTest >> testIsLeaf4 [
 		      yourself.
 	b1 addChild: b2.
 
-	self deny: b1 shouldSerializedChildren.
+	self assert: b1 shouldSerializedChildren.
 	self assert: b1 id equals: #b1.
 	self assert: b1 childrenCount equals: 1.
 
 	element := b1 serializeThenMaterialize.
-	self deny: element shouldSerializedChildren.
+	self assert: element shouldSerializedChildren.
 	self assert: element id equals: #b1.
-	self assert: element childrenCount equals: 0.
+	self assert: element childrenCount equals: 1.
 ]
 
 { #category : #tests }

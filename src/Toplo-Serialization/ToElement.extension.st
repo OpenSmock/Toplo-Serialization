@@ -4,7 +4,7 @@ Extension { #name : #ToElement }
 ToElement >> shouldSerializedChildren [
 	"Toplo elements should not serialize children by default. Manage exeptions in subclasses."
 
-	^ false
+	^ (self class == ToElement)
 ]
 
 { #category : #'*Toplo-Serialization' }
