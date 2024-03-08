@@ -51,7 +51,7 @@ ToSerializerTest >> testIsLeaf1 [
 	b1 addChild: b2.
 
 	self test: b1 on: [ :element |
-		self assert: element isLeaf equals: false.
+		self assert: element shouldSerializedChildren.
 		self assert: element id equals: #b1.
 		self assert: element childrenCount equals: 1.
 		self assert: (element childAt: 1) id equals: #b2 ]
@@ -70,7 +70,7 @@ ToSerializerTest >> testIsLeaf2 [
 	b1 addChild: b2.
 
 	[ :element |
-	self assert: element isLeaf equals: true.
+	self deny: element shouldSerializedChildren.
 	self assert: element id equals: #b1.
 	self assert: element childrenCount equals: 0 ] value:
 		b1 serialize materializeAsBlElement
@@ -89,7 +89,7 @@ ToSerializerTest >> testIsLeaf3 [
 	b1 addChild: b2.
 
 	self test: b1 on: [ :element |
-		self assert: element isLeaf equals: false.
+		self assert: element shouldSerializedChildren.
 		self assert: element id equals: #b1.
 		self assert: element childrenCount equals: 1.
 		self assert: (element childAt: 1) id equals: #b2 ]
@@ -98,7 +98,7 @@ ToSerializerTest >> testIsLeaf3 [
 { #category : #tests }
 ToSerializerTest >> testIsLeaf4 [
 
-	| b1 b2 |
+	| b1 b2 element |
 	b1 := ToElement new
 		      id: #b1;
 		      yourself.
@@ -107,11 +107,14 @@ ToSerializerTest >> testIsLeaf4 [
 		      yourself.
 	b1 addChild: b2.
 
-	self test: b1 on: [ :element |
-		self assert: element isLeaf equals: false.
-		self assert: element id equals: #b1.
-		self assert: element childrenCount equals: 1.
-		self assert: (element childAt: 1) id equals: #b2 ]
+	self deny: b1 shouldSerializedChildren.
+	self assert: b1 id equals: #b1.
+	self assert: b1 childrenCount equals: 1.
+
+	element := b1 serializeThenMaterialize.
+	self deny: element shouldSerializedChildren.
+	self assert: element id equals: #b1.
+	self assert: element childrenCount equals: 0.
 ]
 
 { #category : #tests }
