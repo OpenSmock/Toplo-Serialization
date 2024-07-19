@@ -8,7 +8,7 @@ ToCheckbox >> stonPostReferenceResolution [
 		self checked: aCheckValue.
 		self userData removeKey: #stonChecked ].
 	self userData at: #stonGroup ifPresent: [ :aGroup |
-		aGroup add: self.
+		aGroup register: self.
 		self userData removeKey: #stonGroup ]
 ]
 
