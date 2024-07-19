@@ -7,6 +7,6 @@ SmalltalkCISpec {
     }
   ],
   #testing : {
-    #packages : [ 'Toplo-Serialization.*' ]
+    #packages : [ 'Toplo-Serialization*' ]
   }
 }
