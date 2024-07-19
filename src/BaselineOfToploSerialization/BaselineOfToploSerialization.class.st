@@ -18,7 +18,7 @@ BaselineOfToploSerialization >> baseline: spec [
 		spec package: 'Toplo-Serialization-STON'.
 		spec package: 'Toplo-Serialization-Stash'.
 		spec package: 'Toplo-Serialization' with: [
-			spec requires: #( 'Toplo' 'Bloc-Serialization' 'Toplo-Serialization-STON' 'Toplo-Serialization-Stash'
+			spec requires: #( 'Toplo' 'BlocSerialization' 'Toplo-Serialization-STON' 'Toplo-Serialization-Stash'
 			   'Ston' 'StashSerialization' ) ].
 		spec
 			package: 'Toplo-Serialization-Tests'
