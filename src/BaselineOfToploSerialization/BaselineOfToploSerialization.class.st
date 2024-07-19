@@ -12,9 +12,17 @@ BaselineOfToploSerialization >> baseline: spec [
 		self dependency: spec.
 
 		"project packages"
+		self dependency: spec.
+		
+		"project packages"
+		spec package: 'Toplo-Serialization-STON'.
+		spec package: 'Toplo-Serialization-Stash'.
+		spec package: 'Toplo-Serialization' with: [
+			spec requires: #( 'Toplo' 'Bloc-Serialization' 'Toplo-Serialization-STON' 'Toplo-Serialization-Stash'
+			   'Ston' 'StashSerialization' ) ].
 		spec
-			package: 'Toplo-Serialization'
-			 ]
+			package: 'Toplo-Serialization-Tests'
+			with: [ spec requires: #( 'Toplo-Serialization' ) ] ]
 ]
 
 { #category : #baselines }
