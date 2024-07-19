@@ -1,6 +1,6 @@
 Extension { #name : #ToCheckbox }
 
-{ #category : #'*Toplo-Serialization' }
+{ #category : #'*Toplo-Serialization-STON' }
 ToCheckbox >> stonPostReferenceResolution [
 
 	super stonPostReferenceResolution.
@@ -12,7 +12,7 @@ ToCheckbox >> stonPostReferenceResolution [
 		self userData removeKey: #stonGroup ]
 ]
 
-{ #category : #'*Toplo-Serialization' }
+{ #category : #'*Toplo-Serialization-STON' }
 ToCheckbox >> stonUserDataOn: aIdentityDictionary [
 
 	super stonUserDataOn: aIdentityDictionary.

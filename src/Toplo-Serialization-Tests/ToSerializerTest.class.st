@@ -1,7 +1,7 @@
 Class {
 	#name : #ToSerializerTest,
 	#superclass : #BlocSerializationTests,
-	#category : #'Toplo-Serialization-cases-test'
+	#category : #'Toplo-Serialization-Tests'
 }
 
 { #category : #tests }

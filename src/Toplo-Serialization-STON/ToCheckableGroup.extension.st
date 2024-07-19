@@ -1,13 +1,13 @@
 Extension { #name : #ToCheckableGroup }
 
-{ #category : #'*Toplo-Serialization' }
+{ #category : #'*Toplo-Serialization-STON' }
 ToCheckableGroup >> fromSton: stonReader [
 
 	stonReader parseMapDo: [ :key :value |
 		key = #checkingStrategy ifTrue: [ self checkingStrategy: value ] ]
 ]
 
-{ #category : #'*Toplo-Serialization' }
+{ #category : #'*Toplo-Serialization-STON' }
 ToCheckableGroup >> stonOn: stonWriter [
 
 	stonWriter writeObject: self streamMap: [ :dictionary |
@@ -15,7 +15,7 @@ ToCheckableGroup >> stonOn: stonWriter [
 			at: #checkingStrategy put: self checkingStrategy ]
 ]
 
-{ #category : #'*Toplo-Serialization' }
+{ #category : #'*Toplo-Serialization-STON' }
 ToCheckableGroup >> stonProcessSubObjects: block [
 
 	self

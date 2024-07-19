@@ -1,6 +1,6 @@
 Extension { #name : #ToButton }
 
-{ #category : #'*Toplo-Serialization' }
+{ #category : #'*Toplo-Serialization-STON' }
 ToButton >> stonPostReferenceResolution [
 
 	super stonPostReferenceResolution.
@@ -10,7 +10,7 @@ ToButton >> stonPostReferenceResolution [
 		self userData removeKey: #stonLabeledIcon ]
 ]
 
-{ #category : #'*Toplo-Serialization' }
+{ #category : #'*Toplo-Serialization-STON' }
 ToButton >> stonUserDataOn: aIdentityDictionary [
 
 	super stonUserDataOn: aIdentityDictionary.
