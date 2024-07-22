@@ -13,13 +13,14 @@ BaselineOfToploSerialization >> baseline: spec [
 
 		"project packages"
 		self dependency: spec.
-		
+
 		"project packages"
 		spec package: 'Toplo-Serialization-STON'.
 		spec package: 'Toplo-Serialization-Stash'.
 		spec package: 'Toplo-Serialization' with: [
-			spec requires: #( 'Toplo' 'BlocSerialization' 'Toplo-Serialization-STON' 'Toplo-Serialization-Stash'
-			   'Ston' 'StashSerialization' ) ].
+			spec requires:
+				#( 'Toplo' 'BlocSerialization' 'Toplo-Serialization-STON'
+				   'Toplo-Serialization-Stash' ) ].
 		spec
 			package: 'Toplo-Serialization-Tests'
 			with: [ spec requires: #( 'Toplo-Serialization' ) ] ]
@@ -29,15 +30,11 @@ BaselineOfToploSerialization >> baseline: spec [
 BaselineOfToploSerialization >> dependency: spec [
 
 	spec
-		baseline: 'Ston'
-		with: [ spec repository: 'github://svenvc/ston/repository' ].
-
-	spec
 		baseline: #BlocSerialization
 		with: [
 		spec repository: 'github://OpenSmock/Bloc-Serialization:main/src' ].
 
-	spec baseline: 'Toplo' with: [ spec repository: 'github://pharo-graphics/Toplo:dev/src' ].
-
-
+	spec
+		baseline: 'Toplo'
+		with: [ spec repository: 'github://pharo-graphics/Toplo:dev/src' ]
 ]
