@@ -1,6 +1,6 @@
 Extension { #name : #ToImage }
 
-{ #category : #'*Toplo-Serialization' }
+{ #category : #'*Toplo-Serialization-STON' }
 ToImage >> stonPostReferenceResolution [
 
 	super stonPostReferenceResolution.
@@ -9,7 +9,7 @@ ToImage >> stonPostReferenceResolution [
 		self userData removeKey: #stonInnerImage ]
 ]
 
-{ #category : #'*Toplo-Serialization' }
+{ #category : #'*Toplo-Serialization-STON' }
 ToImage >> stonUserDataOn: aIdentityDictionary [
 
 	super stonUserDataOn: aIdentityDictionary.

@@ -1,7 +1,7 @@
 Class {
 	#name : #ToSerializerTest,
 	#superclass : #BlocSerializationTests,
-	#category : #'Toplo-Serialization-cases-test'
+	#category : #'Toplo-Serialization-Tests'
 }
 
 { #category : #tests }
@@ -192,6 +192,41 @@ ToSerializerTest >> testToButton4 [
 ]
 
 { #category : #tests }
+ToSerializerTest >> testToButton5 [
+
+	| origin |
+	origin := ToButton new.
+
+	self test: origin on: [ :element |
+		self deny: element isCheckable ]
+]
+
+{ #category : #tests }
+ToSerializerTest >> testToButton6 [
+
+	| origin |
+	origin := ToButton new
+		          beCheckable;
+		          yourself.
+
+	self test: origin on: [ :element | self assert: element isCheckable.
+		self deny: element isChecked ]
+]
+
+{ #category : #tests }
+ToSerializerTest >> testToButton7 [
+
+	| origin |
+	origin := ToButton new
+		          beCheckable;
+		check;
+		          yourself.
+
+	self test: origin on: [ :element | self assert: element isCheckable.
+		self assert: element isChecked ]
+]
+
+{ #category : #tests }
 ToSerializerTest >> testToCheckbox1 [
 
 	| origin |
@@ -260,17 +295,17 @@ ToSerializerTest >> testToCheckbox4 [
 	button1 := ToCheckbox new
 		           id: #button1;
 		           labelText: 'button1';
-		           addToGroup: group;
+		           registerInGroup: group;
 		           yourself.
 	button2 := ToCheckbox new
 		           id: #button2;
 		           labelText: 'button2';
-		           addToGroup: group;
+		           registerInGroup: group;
 		           yourself.
 	button3 := ToCheckbox new
 		           id: #button3;
 		           labelText: 'button3';
-		           addToGroup: group;
+		           registerInGroup: group;
 		           yourself.
 	pane addChildren: {
 			button1.
@@ -294,13 +329,17 @@ ToSerializerTest >> testToCheckbox4 [
 			assert: (element childAt: 2) group
 			equals: (element childAt: 3) group.
 		self
-			assert: (element childAt: 1) group buttons size equals: 3.
-			self
-			assert: ((element childAt: 1) group buttons includes: (element childAt: 1)).
-			self
-			assert: ((element childAt: 1) group buttons includes: (element childAt: 2)).
-			self
-			assert: ((element childAt: 1) group buttons includes: (element childAt: 3)). ]
+			assert: (element childAt: 1) group registeredCheckables size
+			equals: 3.
+		self assert:
+			((element childAt: 1) group registeredCheckables includes:
+				 (element childAt: 1)).
+		self assert:
+			((element childAt: 1) group registeredCheckables includes:
+				 (element childAt: 2)).
+		self assert:
+			((element childAt: 1) group registeredCheckables includes:
+				 (element childAt: 3)) ]
 ]
 
 { #category : #tests }
@@ -344,39 +383,6 @@ ToSerializerTest >> testTooltip1 [
 { #category : #tests }
 ToSerializerTest >> testTooltip2 [
 
-	| origin tooltip |
-	tooltip := BlElement new id: #tooltip; yourself.
-	origin := ToElement new tooltipContent: tooltip; yourself.
-
-	self
-		test: origin
-		on: [ :element | self assert: element hasTooltip.
-			element newTooltipWindowEvent: nil.
-			self assert: element hasOpenedTooltip.
-			self assert: ((element currentTooltipWindow childAt: 1 ) childAt: 1) id equals: #tooltip
-			]
-]
-
-{ #category : #tests }
-ToSerializerTest >> testTooltip3 [
-
-	| origin |
-	origin := ToElement new
-		          tooltipText: 'hello tooltip';
-		          yourself.
-
-	self test: origin on: [ :element |
-		self assert: element hasTooltip.
-		element newTooltipWindowEvent: nil.
-		self assert: element hasOpenedTooltip.
-		self
-			assert: ((element currentTooltipWindow childAt: 1) childAt: 1) text asString
-			equals: 'hello tooltip' ]
-]
-
-{ #category : #tests }
-ToSerializerTest >> testTooltip4 [
-
 	| origin |
 	origin := ToElement new
 		          tooltipText: 'hello tooltip';
@@ -389,7 +395,7 @@ ToSerializerTest >> testTooltip4 [
 ]
 
 { #category : #tests }
-ToSerializerTest >> testTooltip5 [
+ToSerializerTest >> testTooltip3 [
 
 	| origin |
 	origin := ToElement new

@@ -1,6 +1,6 @@
 Extension { #name : #ToCheckbox }
 
-{ #category : #'*Toplo-Serialization' }
+{ #category : #'*Toplo-Serialization-STON' }
 ToCheckbox >> stonPostReferenceResolution [
 
 	super stonPostReferenceResolution.
@@ -8,14 +8,15 @@ ToCheckbox >> stonPostReferenceResolution [
 		self checked: aCheckValue.
 		self userData removeKey: #stonChecked ].
 	self userData at: #stonGroup ifPresent: [ :aGroup |
-		aGroup add: self.
+		aGroup register: self.
 		self userData removeKey: #stonGroup ]
 ]
 
-{ #category : #'*Toplo-Serialization' }
+{ #category : #'*Toplo-Serialization-STON' }
 ToCheckbox >> stonUserDataOn: aIdentityDictionary [
 
 	super stonUserDataOn: aIdentityDictionary.
 	aIdentityDictionary at: #stonChecked put: self checked.
-	self group ifNotNil: [ aIdentityDictionary at: #stonGroup put: self group. ]
+	self group ifNotNil: [
+		aIdentityDictionary at: #stonGroup put: self group ]
 ]
