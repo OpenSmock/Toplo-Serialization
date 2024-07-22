@@ -4,6 +4,7 @@ Extension { #name : #TToCheckable }
 TToCheckable >> allSetterAndGettersOfTraitForMyStash: aToElement [
 
 	| settersAndGetters |
+	self isCheckable ifFalse: [ ^ {  } ].
 	settersAndGetters := OrderedCollection new.
 	settersAndGetters add: #checked.
 	settersAndGetters add: #group.

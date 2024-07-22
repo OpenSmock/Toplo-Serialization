@@ -17,5 +17,6 @@ ToCheckbox >> stonUserDataOn: aIdentityDictionary [
 
 	super stonUserDataOn: aIdentityDictionary.
 	aIdentityDictionary at: #stonChecked put: self checked.
-	self group ifNotNil: [ aIdentityDictionary at: #stonGroup put: self group. ]
+	self group ifNotNil: [
+		aIdentityDictionary at: #stonGroup put: self group ]
 ]
