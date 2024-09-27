@@ -28,3 +28,11 @@ BlElement >> allSetterAndGettersForMyStashAllTokens [
 
 	
 ]
+
+{ #category : #'*Toplo-Serialization-Stash' }
+BlElement >> stashEnabled [
+
+	<stashAccessors>
+	self isEnabled ifTrue: [ ^ {  } ].
+	^ { (#enabled: -> #isEnabled) }
+]

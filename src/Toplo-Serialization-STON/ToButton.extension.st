@@ -28,8 +28,8 @@ ToButton >> stonUserDataOn: aIdentityDictionary [
 	super stonUserDataOn: aIdentityDictionary.
 
 	"LabeledIcon"
-	(self class usesTrait: TToElementWithLabeledIcon) ifTrue: [
-		aIdentityDictionary at: #stonLabeledIcon put: self labeledIcon ].
+	"(self class usesTrait: TToLabeledIcon) ifTrue: [
+		aIdentityDictionary at: #stonLabeledIcon put: self labeledIcon ]."
 
 	"Checkable"
 	self isCheckable ifFalse: [ ^ self ].
