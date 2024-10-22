@@ -36,5 +36,5 @@ BaselineOfToploSerialization >> dependency: spec [
 
 	spec
 		baseline: 'Toplo'
-		with: [ spec repository: 'github://pharo-graphics/Toplo:dev/src' ]
+		with: [ spec repository: 'github://OpenSmock/Toplo:dev/src' ]
 ]
