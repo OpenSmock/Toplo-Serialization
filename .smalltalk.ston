@@ -3,6 +3,7 @@ SmalltalkCISpec {
     SCIMetacelloLoadSpec {
       #baseline : 'ToploSerialization',
       #directory : 'src',
+      #onConflict : #useLoaded,
       #platforms : [ #pharo ]
     }
   ]
