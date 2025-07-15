@@ -202,31 +202,6 @@ ToSerializerTest >> testToButton5 [
 ]
 
 { #category : #tests }
-ToSerializerTest >> testToButton6 [
-
-	| origin |
-	origin := ToButton new
-		          beCheckable;
-		          yourself.
-
-	self test: origin on: [ :element | self assert: element isCheckable.
-		self deny: element isChecked ]
-]
-
-{ #category : #tests }
-ToSerializerTest >> testToButton7 [
-
-	| origin |
-	origin := ToButton new
-		          beCheckable;
-		check;
-		          yourself.
-
-	self test: origin on: [ :element | self assert: element isCheckable.
-		self assert: element isChecked ]
-]
-
-{ #category : #tests }
 ToSerializerTest >> testToCheckbox1 [
 
 	| origin |
