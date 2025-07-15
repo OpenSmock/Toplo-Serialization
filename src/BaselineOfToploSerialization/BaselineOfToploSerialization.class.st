@@ -30,10 +30,6 @@ BaselineOfToploSerialization >> baseline: spec [
 BaselineOfToploSerialization >> dependency: spec [
 
 	spec
-		baseline: 'Bloc'
-		with: [ spec repository: 'github://OpenSmock/Bloc:dev/src' ].
-
-	spec
 		baseline: #BlocSerialization
 		with: [
 		spec repository: 'github://OpenSmock/Bloc-Serialization:main/src' ].
