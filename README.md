@@ -3,6 +3,7 @@
 [![Pharo 12 CI](https://github.com/OpenSmock/Toplo-Serialization/actions/workflows/Pharo12CI.yml/badge.svg)](https://github.com/OpenSmock/Toplo-Serialization/actions/workflows/Pharo12CI.yml)
 
 # Toplo-Serialization
+
 Toplo serialization features to store/unstore ToElements.
 
 ## Getting Started
