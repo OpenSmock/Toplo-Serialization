@@ -318,6 +318,29 @@ ToSerializerTest >> testToCheckbox4 [
 ]
 
 { #category : #tests }
+ToSerializerTest >> testToImage1 [
+
+	| origin |
+	origin := ToImage new.
+
+	self
+		test: origin
+		on: [ :element |
+		self assert: element innerImage id equals: #emptyImage ]
+]
+
+{ #category : #tests }
+ToSerializerTest >> testToImage2 [
+
+	| origin |
+	origin := ToImage inner: (ToSandBox pathCheckSVG).
+
+	self
+		test: origin
+		on: [ :element | self assert: element innerImage id equals: #svgPath ]
+]
+
+{ #category : #tests }
 ToSerializerTest >> testToLabel [
 
 	| origin |
