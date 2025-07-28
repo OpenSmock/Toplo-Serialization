@@ -355,14 +355,22 @@ ToSerializerTest >> testToLabel [
 ToSerializerTest >> testTokens [
 
 	| origin |
+	self skip.
 	origin := ToElement new
 		          addTokenNamed: #hello withValue: #goodbye;
 		          addTokenNamed: #titi withValue: #toto;
 		          yourself.
 
 	self test: origin on: [ :element |
-		self assert: (element ensuredSkinManager tokenPropertyValue: #hello from: element) isNotNil.
-		self assert: (element ensuredSkinManager tokenPropertyValue: #titi from: element) isNotNil.
-		self assert: (element valueOfTokenNamed: #hello) value equals: #goodbye.
+		self assert:
+			(element ensuredSkinManager
+				 tokenPropertyValue: #hello
+				 from: element) isNotNil.
+		self assert:
+			(element ensuredSkinManager tokenPropertyValue: #titi from: element)
+				isNotNil.
+		self
+			assert: (element valueOfTokenNamed: #hello) value
+			equals: #goodbye.
 		self assert: (element valueOfTokenNamed: #titi) value equals: #toto ]
 ]

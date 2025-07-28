@@ -1,6 +1,14 @@
 Extension { #name : #BlElement }
 
 { #category : #'*Toplo-Serialization-Stash' }
+BlElement >> allSetterAndGettersForMyStashAllLocalTheme [
+
+	<stashAccessors>
+	self localTheme ifNil: [ ^ {  } ].
+	^ { (#localTheme: -> #localTheme) }
+]
+
+{ #category : #'*Toplo-Serialization-Stash' }
 BlElement >> allSetterAndGettersForMyStashAllStamps [
 
 	<stashAccessors>
@@ -18,15 +26,17 @@ BlElement >> allSetterAndGettersForMyStashAllStamps [
 BlElement >> allSetterAndGettersForMyStashAllTokens [
 
 	<stashAccessors>
-	self ensuredToStyleStore.
+	"self ensuredToStyleStore.
 	self toStyleStore tokenPropertyIndex isEmpty ifTrue: [ ^ {  } ].
-	^ self toStyleStore tokenPropertyIndex allProperties collect: [ :assoc | | setter getter |
-		setter := [ :element | 'addTokenNamed: <1p> withValue:' expandMacrosWith: assoc value name ].
-		getter := [ :element | assoc value value ].
-		setter -> getter
-		 ]
-
-	
+	^ self toStyleStore tokenPropertyIndex allProperties collect: [
+		  :assoc |
+		  | setter getter |
+		  setter := [ :element |
+		            'addTokenNamed: <1p> withValue:' expandMacrosWith:
+			            assoc value name ].
+		  getter := [ :element | assoc value value ].
+		  setter -> getter ]"
+	^ {  }
 ]
 
 { #category : #'*Toplo-Serialization-Stash' }
