@@ -1,6 +1,9 @@
+[![Pharo 11](https://img.shields.io/badge/Pharo-11-%23aac9ff.svg)](https://pharo.org/download)
+[![Pharo 12](https://img.shields.io/badge/Pharo-12-%23aac9ff.svg)](https://pharo.org/download)
+[![Pharo 13](https://img.shields.io/badge/Pharo-13-%23aac9ff.svg)](https://pharo.org/download)
+
 [![License](https://img.shields.io/github/license/OpenSmock/Toplo-Serialization.svg)](./LICENSE)
-[![Pharo 11 CI](https://github.com/OpenSmock/Toplo-Serialization/actions/workflows/Pharo11CI.yml/badge.svg)](https://github.com/OpenSmock/Toplo-Serialization/actions/workflows/Pharo11CI.yml)
-[![Pharo 12 CI](https://github.com/OpenSmock/Toplo-Serialization/actions/workflows/Pharo12CI.yml/badge.svg)](https://github.com/OpenSmock/Toplo-Serialization/actions/workflows/Pharo12CI.yml)
+[![Unit tests](https://github.com/OpenSmock/Toplo-Serialization/actions/workflows/CI.yml/badge.svg)](https://github.com/OpenSmock/Toplo-Serialization/actions/workflows/CI.yml)
 
 # Toplo-Serialization
 Toplo serialization features to store/unstore ToElements.
