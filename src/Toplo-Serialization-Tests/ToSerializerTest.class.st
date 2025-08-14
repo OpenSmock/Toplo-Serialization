@@ -118,6 +118,32 @@ ToSerializerTest >> testIsLeaf4 [
 ]
 
 { #category : #tests }
+ToSerializerTest >> testLocalTheme1 [
+
+	| origin |
+	origin := BlElement new localTheme: ToBeeTheme new; yourself.
+
+	self test: origin on: [ :element |
+		self assert: element localTheme class equals: ToBeeTheme ]
+]
+
+{ #category : #tests }
+ToSerializerTest >> testLocalTheme2 [
+
+	| parent origin |
+	origin := BlElement new
+		          localTheme: ToBeeDarkTheme new;
+		          yourself.
+	parent := BlElement new
+		          localTheme: ToBeeTheme new;
+		          yourself.
+	parent addChild: origin.
+
+	self test: origin on: [ :element |
+		self assert: element localTheme class equals: ToBeeDarkTheme ]
+]
+
+{ #category : #tests }
 ToSerializerTest >> testStamps [
 
 	| origin |
