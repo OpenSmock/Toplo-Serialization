@@ -4,5 +4,5 @@ Extension { #name : #ToLabel }
 ToLabel >> stashAccessorsForText [
 
 	<stashAccessors>
-	^ { #text }
+	^ { ([ :e | 'text: (<1p>)' expandMacrosWith: e text asString ]) onlySetOnStash }
 ]
