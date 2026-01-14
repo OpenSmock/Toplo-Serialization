@@ -36,5 +36,9 @@ BaselineOfToploSerialization >> dependency: spec [
 
 	spec
 		baseline: 'Toplo'
-		with: [ spec repository: 'github://OpenSmock/Toplo:dev/src' ]
+		with: [ spec repository: 'github://OpenSmock/Toplo:dev/src' ].
+		
+	spec
+		baseline: 'Album'
+		with: [ spec repository: 'github://OpenSmock/Album:master' ]
 ]
