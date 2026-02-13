@@ -4,7 +4,7 @@ SmalltalkCISpec {
       #baseline : 'ToploSerialization',
       #directory : 'src',
       #onConflict : #useLoaded,
-      #platforms : [ #pharo ]
+      #platforms : [ #pharo ],
       #onConflict : #useIncoming,
       #onUpgrade : #useLoaded,
       #ignoreImage : true
