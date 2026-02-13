@@ -5,6 +5,14 @@ SmalltalkCISpec {
       #directory : 'src',
       #onConflict : #useLoaded,
       #platforms : [ #pharo ]
+      #onConflict : #useIncoming,
+      #onUpgrade : #useLoaded,
+      #ignoreImage : true
     }
-  ]
+  ],
+
+  #testing : {
+    #failOnZeroTests : false,
+    #packages : [ 'Toplo-Serialization.*.Tests' ]
+  }
 }
