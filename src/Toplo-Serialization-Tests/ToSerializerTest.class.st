@@ -371,12 +371,31 @@ ToSerializerTest >> testToLabel [
 
 	| origin |
 	origin := ToLabel new text: 'hello' asRopedText; yourself.
-	origin beMultiLine.
+
 	self
 		test: origin
 		on: [ :element | 
 			self assert: element text asString equals: 'hello'.
+	].
+		
+]
+
+{ #category : #tests }
+ToSerializerTest >> testToLabelMultiLine [
+
+	| origin |
+	origin := ToLabel new text: 'hello' asRopedText; yourself.
+	origin beMultiLine.
+	self
+		test: origin
+		on: [ :element | 
 			self assert: element isMultiLine 
+	].
+	origin beMonoLine.
+	self
+		test: origin
+		on: [ :element | 
+			self deny: element isMultiLine 
 	].
 		
 ]
