@@ -144,6 +144,21 @@ ToSerializerTest >> testLocalTheme2 [
 ]
 
 { #category : #tests }
+ToSerializerTest >> testPlaceHolder [
+
+	| origin textElement|
+	origin := ToTextField new
+	 placeholderText: 'Enter text...'.
+
+	
+	
+	self
+		test: origin
+		on: [ :element | textElement := (((element userData at:#placeholder) children first) children first).
+			 self assert: (BlTextNonPrintableCharacterPrinter print:textElement text) equals: 'Enter text...' ]
+]
+
+{ #category : #tests }
 ToSerializerTest >> testStamps [
 
 	| origin |
