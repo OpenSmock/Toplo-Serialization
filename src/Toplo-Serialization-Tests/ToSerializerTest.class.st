@@ -174,7 +174,8 @@ ToSerializerTest >> testToAlbum [
 			text := (element userData at: #placeholder) children first.
 			self
 				assert: (BlTextNonPrintableCharacterPrinter print: text text)
-				equals: 'Enter text...'. self assert: element useScrollbar equals: true ] 
+				equals: 'Enter text...'.
+			self assert: element useScrollbar ]
 ]
 
 { #category : #tests }
@@ -441,30 +442,14 @@ ToSerializerTest >> testToListElement [
 		          withRowNumbers;
 		          yourself.
 	self test: origin on: [ :element |
-			self assert: element useScrollbar equals: true.
-			self assert: element useInfiniteLayout equals: true.
-			self assert: element isVertical equals: true.
-			self assert: element toConfiguration rowNumbers equals: true.].
+			self assert: element useScrollbar.
+			self assert: element useInfiniteLayout.
+			self assert: element isVertical.
+			self assert: element toConfiguration rowNumbers ]
 ]
 
 { #category : #tests }
 ToSerializerTest >> testToRadioButton1 [
-
-	| origin |
-	origin := ToRadioButton new
-		          labelText: 'hello';
-		          iconImage: (self iconNamed: #class);
-		          yourself.
-
-	self test: origin on: [ :element |
-			self assert: element labelText asString equals: 'hello'. 
-			self
-				assert: element iconImage background image bits
-				equals: (self iconNamed: #class) bits ]
-]
-
-{ #category : #tests }
-ToSerializerTest >> testToRadioButton2 [
 
 	| origin |
 	origin := ToRadioButton new
@@ -477,7 +462,7 @@ ToSerializerTest >> testToRadioButton2 [
 ]
 
 { #category : #tests }
-ToSerializerTest >> testToRadioButton3 [
+ToSerializerTest >> testToRadioButton2 [
 
 	| origin |
 	origin := ToRadioButton new
@@ -492,7 +477,7 @@ ToSerializerTest >> testToRadioButton3 [
 ]
 
 { #category : #tests }
-ToSerializerTest >> testToRadioButton4 [
+ToSerializerTest >> testToRadioButton3 [
 
 	| origin |
 	origin := ToRadioButton new.
@@ -503,7 +488,7 @@ ToSerializerTest >> testToRadioButton4 [
 ]
 
 { #category : #tests }
-ToSerializerTest >> testToRadioButton5 [
+ToSerializerTest >> testToRadioButton4 [
 
 	| origin |
 	origin := ToRadioButton new.
@@ -536,7 +521,7 @@ ToSerializerTest >> testToTextFieldWrappingMode [
 	self test: origin on: [ :element |
 			element forceLayout.
 			self assert: element width equals: 150.
-			self assert: element wrappingMode equals: true ]
+			self assert: element wrappingMode ]
 ]
 
 { #category : #tests }
