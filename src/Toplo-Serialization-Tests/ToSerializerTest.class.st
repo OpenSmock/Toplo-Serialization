@@ -144,21 +144,6 @@ ToSerializerTest >> testLocalTheme2 [
 ]
 
 { #category : #tests }
-ToSerializerTest >> testPlaceHolder [
-
-	| origin textElement|
-	origin := ToTextField new
-	 placeholderText: 'Enter text...'.
-
-	
-	
-	self
-		test: origin
-		on: [ :element | textElement := (((element userData at:#placeholder) children first) children first).
-			 self assert: (BlTextNonPrintableCharacterPrinter print:textElement text) equals: 'Enter text...' ]
-]
-
-{ #category : #tests }
 ToSerializerTest >> testStamps [
 
 	| origin |
@@ -173,6 +158,24 @@ ToSerializerTest >> testStamps [
 			self assert: (element hasStamp: #withValue).
 			self assert: (element valueOfStamp: #noValue) value equals: true.
 			self assert: (element valueOfStamp: #withValue) value equals: #toto ]
+]
+
+{ #category : #tests }
+ToSerializerTest >> testToAlbum [
+
+	| origin placeholderString |
+	placeholderString := 'Enter text...'.
+	origin := ToAlbum new
+		          placeholderString: placeholderString;
+		          useScrollbar: true;
+		          yourself.
+	self test: origin on: [ :element |
+			| text |
+			text := (element userData at: #placeholder) children first.
+			self
+				assert: (BlTextNonPrintableCharacterPrinter print: text text)
+				equals: 'Enter text...'.
+			self assert: element useScrollbar ]
 ]
 
 { #category : #tests }
@@ -359,6 +362,19 @@ ToSerializerTest >> testToCheckbox4 [
 ]
 
 { #category : #tests }
+ToSerializerTest >> testToIconicButton [
+
+	| origin |
+	origin := ToIconicButton new
+		          iconImage: (ToMaterialDesignIconProvider innerImageNamed:
+					           'outlined_keyboardarrowright');
+		          yourself.
+	self test: origin on: [ :element |
+			self assert: (element isKindOf: ToIconicButton).
+			self assert: element innerImage isNotNil ]
+]
+
+{ #category : #tests }
 ToSerializerTest >> testToImage1 [
 
 	| origin |
@@ -416,25 +432,134 @@ ToSerializerTest >> testToLabelMultiLine [
 ]
 
 { #category : #tests }
-ToSerializerTest >> testTokens [
+ToSerializerTest >> testToListElement [
 
 	| origin |
-	self skip.
-	origin := ToElement new
-		          addTokenNamed: #hello withValue: #goodbye;
-		          addTokenNamed: #titi withValue: #toto;
+	origin := ToListElement new
+		          useScrollbar: true;
+		          useInfiniteLayout: true;
+		          beVertical;
+		          withRowNumbers;
+		          yourself.
+	self test: origin on: [ :element |
+			self assert: element useScrollbar.
+			self assert: element useInfiniteLayout.
+			self assert: element isVertical.
+			self assert: element toConfiguration rowNumbers ]
+]
+
+{ #category : #tests }
+ToSerializerTest >> testToRadioButton1 [
+
+	| origin |
+	origin := ToRadioButton new
+		          labelText: 'hello';
 		          yourself.
 
 	self test: origin on: [ :element |
-		self assert:
-			(element ensuredSkinManager
-				 tokenPropertyValue: #hello
-				 from: element) isNotNil.
-		self assert:
-			(element ensuredSkinManager tokenPropertyValue: #titi from: element)
-				isNotNil.
-		self
-			assert: (element valueOfTokenNamed: #hello) value
-			equals: #goodbye.
-		self assert: (element valueOfTokenNamed: #titi) value equals: #toto ]
+			self assert: element labelText asString equals: 'hello'.
+			self assert: element icon equals: nil ]
+]
+
+{ #category : #tests }
+ToSerializerTest >> testToRadioButton2 [
+
+	| origin |
+	origin := ToRadioButton new
+		          iconImage: (self iconNamed: #class);
+		          yourself.
+
+	self test: origin on: [ :element |
+			self assert: element label equals: nil.
+			self
+				assert: element iconImage background image bits
+				equals: (self iconNamed: #class) bits ]
+]
+
+{ #category : #tests }
+ToSerializerTest >> testToRadioButton3 [
+
+	| origin |
+	origin := ToRadioButton new.
+
+	self test: origin on: [ :element |
+			self assert: element label equals: nil.
+			self assert: element icon equals: nil ]
+]
+
+{ #category : #tests }
+ToSerializerTest >> testToRadioButton4 [
+
+	| origin |
+	origin := ToRadioButton new.
+
+	self test: origin on: [ :element | self assert: element isCheckable ]
+]
+
+{ #category : #tests }
+ToSerializerTest >> testToTextFieldPlaceholder [
+
+	| origin textElement |
+	origin := ToTextField new placeholderText: 'Enter text...'.
+
+	self test: origin on: [ :element |
+			textElement := (element userData at: #placeholder) children first.
+			self
+				assert:
+				(BlTextNonPrintableCharacterPrinter print: textElement text)
+				equals: 'Enter text...' ].
+]
+
+{ #category : #tests }
+ToSerializerTest >> testToTextFieldWrappingMode [
+
+	| origin |
+	origin := ToTextField new
+		          width: 150;
+		          wrappingMode: true;
+		          yourself.
+	self test: origin on: [ :element |
+			element forceLayout.
+			self assert: element width equals: 150.
+			self assert: element wrappingMode ]
+]
+
+{ #category : #tests }
+ToSerializerTest >> testToToggleButton1 [
+
+	| origin |
+	origin := ToToggleButton new
+		          labelText: 'hello';
+		          yourself.
+
+	self test: origin on: [ :element |
+			self assert: element labelText asString equals: 'hello'] 
+]
+
+{ #category : #tests }
+ToSerializerTest >> testToToggleButton2 [
+
+	| origin |
+	origin := ToButton new.
+
+	self test: origin on: [ :element |
+			self assert: element label equals: nil.
+			self assert: element icon equals: nil ]
+		
+]
+
+{ #category : #tests }
+ToSerializerTest >> testToToggleButton3 [
+
+	| origin |
+	origin := ToToggleButton new
+		          icon:
+			          (ToImage new innerImage: (self iconNamed: #solidMenu));
+		          yourself.
+
+	self test: origin on: [ :element |
+			self assert: element label equals: nil.
+			self
+				assert: element iconImage background image bits
+				equals: (self iconNamed: #solidMenu) bits ].  
 ]
