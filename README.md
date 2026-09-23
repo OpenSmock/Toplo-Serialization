@@ -24,7 +24,7 @@ Metacello new
 
 ## Dependencies
 
-- [Bloc-Serialization](https://github.com/OpenSmock/Toplo-Serialization)
+- [Bloc-Serialization](https://github.com/OpenSmock/Bloc-Serialization)
 - [Album](https://github.com/pharo-graphics/Album)
 - [Toplo](https://github.com/pharo-graphics/Toplo)
 
