@@ -33,8 +33,13 @@ BaselineOfToploSerialization >> dependency: spec [
 		baseline: #BlocSerialization
 		with: [
 		spec repository: 'github://OpenSmock/Bloc-Serialization:main/src' ].
+	
+	"Graphic librairies: this section should be removed when librairies will be integrated in Pharo"
+	spec
+		baseline: 'Album'
+		with: [ spec repository: 'github://ThalesGroup/Album:dev' ].
 
 	spec
 		baseline: 'Toplo'
-		with: [ spec repository: 'github://OpenSmock/Toplo:dev/src' ]
+		with: [ spec repository: 'github://ThalesGroup/Toplo:dev' ]
 ]

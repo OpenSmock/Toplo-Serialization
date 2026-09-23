@@ -12,8 +12,8 @@ BlElement >> allSetterAndGettersForMyStashAllLocalTheme [
 BlElement >> allSetterAndGettersForMyStashAllStamps [
 
 	<stashAccessors>
-	self allStamps isEmpty ifTrue: [ ^ {  } ].
-	^ self toStyleStore stampIndex allProperties collect: [ :assoc | | setter getter |
+	self ensuredStampMap allPropertyNames isEmpty ifTrue: [ ^ {  } ].
+	^ self ensuredStampMap allProperties collect: [ :assoc | | setter getter |
 		setter := [ :element | 'addStamp: <1p> withValue:' expandMacrosWith: assoc value name ].
 		getter := [ :element | assoc value value ].
 		setter -> getter

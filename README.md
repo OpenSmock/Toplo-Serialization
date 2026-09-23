@@ -23,8 +23,9 @@ Metacello new
 
 ## Dependencies
 
-- [Toplo](https://github.com/plantec/Toplo)
 - [Bloc-Serialization](https://github.dev/OpenSmock/Bloc-Serialization)
+- [Album](https://github.com/pharo-graphics/Album)
+- [Toplo](https://github.com/pharo-graphics/Toplo)
 
 ## License
 

@@ -4,5 +4,10 @@ Extension { #name : #ToLabel }
 ToLabel >> stashAccessorsForText [
 
 	<stashAccessors>
-	^ { ([ :e | 'text: (<1p>)' expandMacrosWith: e text asString ]) onlySetOnStash }
+	| accessors |
+	accessors := OrderedCollection with: #text.
+	self isMultiLine ifTrue:[
+		accessors add: #multiLine: -> #isMultiLine
+	].
+	^ accessors
 ]
