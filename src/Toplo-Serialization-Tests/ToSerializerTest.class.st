@@ -449,6 +449,62 @@ ToSerializerTest >> testToListElement [
 ]
 
 { #category : #tests }
+ToSerializerTest >> testToPane [
+
+	| origin |
+	origin := ToPane new.
+	
+	self test: origin on: [ :element | 
+		self assert: element background isTransparent
+	].
+
+	origin background: Color red.
+	
+	self test: origin on: [ :element | 
+		self assert: element background paint color equals: Color red.
+	]
+		
+]
+
+{ #category : #tests }
+ToSerializerTest >> testToPane2 [
+
+	| origin |
+	origin := ToPane new.
+	
+	self test: origin on: [ :element | 
+		self deny: element hasChildren
+	].
+	1 to: 5 do:[:i |  
+		origin addChild: BlElement new
+	].
+	
+	self test: origin on: [ :element |
+		self assert: element hasChildren.
+		self assert: element children size equals: 5
+	]
+		
+]
+
+{ #category : #tests }
+ToSerializerTest >> testToPane3 [
+
+	| origin |
+	origin := ToPane new.
+	
+	self test: origin on: [ :element | 
+		self assert: element layout class equals: BlLinearLayout.
+	].
+	
+	origin layout: BlFrameLayout new.
+	
+	self test: origin on: [ :element | 
+		self assert: element layout class equals: BlFrameLayout.
+	]
+		
+]
+
+{ #category : #tests }
 ToSerializerTest >> testToRadioButton1 [
 
 	| origin |
