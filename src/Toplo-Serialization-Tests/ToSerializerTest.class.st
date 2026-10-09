@@ -553,6 +553,55 @@ ToSerializerTest >> testToRadioButton4 [
 ]
 
 { #category : #tests }
+ToSerializerTest >> testToSwitchButton1 [
+
+	| origin |
+	origin := ToSwitchButton new
+		          labelText: 'hello';
+		          yourself.
+
+	self test: origin on: [ :element |
+			self assert: element labelText asString equals: 'hello'] 
+]
+
+{ #category : #tests }
+ToSerializerTest >> testToSwitchButton2 [
+
+	| origin |
+	origin := ToSwitchButton new.
+
+	self test: origin on: [ :element |
+			self assert: element label equals: nil.
+			self deny: element icon equals: nil ]
+		
+]
+
+{ #category : #tests }
+ToSerializerTest >> testToSwitchButton3 [
+
+	| origin |
+	origin := ToSwitchButton new
+		          checked:true;
+		          yourself.
+		
+	self assert: origin icon isChecked.
+
+	self test: origin on: [ :element |
+			self assert: element label equals: nil.
+			self assert: element icon isChecked ] 
+]
+
+{ #category : #tests }
+ToSerializerTest >> testToSwitchButton4 [
+
+	| origin |
+	origin := ToSwitchButton new.
+
+	self test: origin on: [ :element |
+		self assert: element isCheckable ]
+]
+
+{ #category : #tests }
 ToSerializerTest >> testToTextFieldPlaceholder [
 
 	| origin textElement |
@@ -596,7 +645,7 @@ ToSerializerTest >> testToToggleButton1 [
 ToSerializerTest >> testToToggleButton2 [
 
 	| origin |
-	origin := ToButton new.
+	origin := ToToggleButton new.
 
 	self test: origin on: [ :element |
 			self assert: element label equals: nil.
